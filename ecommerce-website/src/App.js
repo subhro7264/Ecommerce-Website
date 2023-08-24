@@ -12,7 +12,7 @@ function App() {
   return (
     <Fragment>
     <Navbar/>
-   <Products/>
+    <Products/>
     </Fragment>
   );
 }
