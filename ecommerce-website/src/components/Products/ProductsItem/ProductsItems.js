@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from "react";
+import React, {useContext } from "react";
 import { Col, Container, Row, Card} from "react-bootstrap";
 import CardContext from "../../store/cart-context";
 import ProductForm from '../ProductForm'
@@ -14,7 +14,7 @@ const ProductsItems = (props) => {
     })
   }
   return (
-    <Fragment>
+
       <Container className="mt-5  text-center " variant="flush">
           <Col  className="d-flex justify-content-center" >
             <Row >
@@ -29,7 +29,7 @@ const ProductsItems = (props) => {
             </Row>
           </Col>
         </Container>
-    </Fragment>
+    
   );
 };
 export default ProductsItems;
