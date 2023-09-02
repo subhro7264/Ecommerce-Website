@@ -1,3 +1,6 @@
+
+
+
 import React, { Fragment, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Layout/Navbar";
@@ -9,11 +12,11 @@ import Generics from "./components/TheGenerics/Generics";
 import Home from "./components/Pages/Home";
 import Footer from "./components/Layout/Footer";
 import ContactUs from "./components/Pages/ContactUs";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes} from "react-router-dom"; 
+import ProductPage from "./components/Products/ProductDetails/ProductDetails";
 
 function App() {
   const [cart, setCart] = useState(false);
-
 
   async function addDetailsHandler(detail) {
     const response = await fetch(
@@ -30,15 +33,13 @@ function App() {
     console.log(data);
   }
 
-
-
-
   const onShowCartHandler = () => {
     setCart(true);
   };
   const onHideCartHandler = () => {
     setCart(false);
   };
+
   return (
     <Fragment>
       <CartProvider>
@@ -46,16 +47,24 @@ function App() {
         {cart && <Cart onHideCart={onHideCartHandler} />}
         {!cart && <Generics />}
         <Routes>
-  
-         { !cart && <Route path="/about" element={<About />} />}
-         { !cart && <Route exact path="/" element={<Products />} />}
-         {!cart && <Route path="/home" element={<Home />} />}
-         { !cart && <Route path="/contactUs" element={<ContactUs  onAddDetails={addDetailsHandler} />} />}
+          {!cart && <Route path="/about" element={<About />} />}
+          {!cart && <Route exact path="/" element={<Products />} />}
+          {!cart && <Route path="/home" element={<Home />} />}
+          {!cart && (
+            <Route
+              path="/contactUs"
+              element={<ContactUs onAddDetails={addDetailsHandler} />}
+            />
+          )}
+          <Route path="Products/:productId" element={<ProductPage />} />
+
+         
         </Routes>
-        <Footer/>
+        <Footer />
       </CartProvider>
     </Fragment>
   );
 }
 
 export default App;
+

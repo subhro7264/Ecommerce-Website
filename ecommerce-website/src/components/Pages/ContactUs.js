@@ -13,14 +13,15 @@ const ContactUs = (props) => {
     const number = numberRef.current.value;
     const email = emailRef.current.value;
 
-
-    const details={
-        name:name,
-        number:number,
-        email:email
-    }
+    const details = {
+      name: name,
+      number: number,
+      email: email,
+    };
     props.onAddDetails(details);
-   
+    nameRef.current.value = "";
+    numberRef.current.value = "";
+    emailRef.current.value = "";
   };
 
   return (
@@ -37,7 +38,7 @@ const ContactUs = (props) => {
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" ref={emailRef} />
+          <Form.Control type="email" placeholder="Enter Your email" ref={emailRef}  required/>
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
           </Form.Text>
@@ -45,7 +46,7 @@ const ContactUs = (props) => {
 
         <Form.Group className="mb-3" controlId="formBasicNumber">
           <Form.Label>Number</Form.Label>
-          <Form.Control type="number" placeholder="Number" ref={numberRef} />
+          <Form.Control type="number" placeholder=" Enter Your Number" ref={numberRef} />
         </Form.Group>
 
         <Button variant="primary" type="submit">

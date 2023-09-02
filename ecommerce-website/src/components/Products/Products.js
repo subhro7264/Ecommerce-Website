@@ -4,7 +4,7 @@ import React, { Fragment } from "react";
 
 import ProductsItems from "./ProductsItem/ProductsItems";
 
-const productsArr = [
+export const productsArr = [
   {
     title: "Colors",
 

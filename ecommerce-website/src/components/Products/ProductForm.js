@@ -35,7 +35,7 @@ const Form = (props) => {
           defaultValue: "1",
         }}
       />
-      <Button type="submit"> + Add</Button>
+      <Button type="submit"> + Add To Cart </Button>
       {!amountIsValid && <p>Please enter a valid amount(1-5).</p>}
     </form>
   );
