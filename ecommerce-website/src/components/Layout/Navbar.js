@@ -1,30 +1,31 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import Button from 'react-bootstrap/Button';
+import { Container, Nav, Navbar } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+import NavbarButton from "./NavbarButton";
 
-const ColorSchemesExample=()=> {
+const NavbarComponent = ({ onShowCart }) => {
   return (
-    <>
-      <Navbar bg="dark" data-bs-theme="dark">
-        <Container>
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Store</Nav.Link>
-            <Nav.Link href="#pricing">About</Nav.Link>
-          </Nav>
-          <Button variant="primary">Cart
-          
-          </Button>
-        </Container>
-       
-      </Navbar>
-      
+    <Navbar bg="dark" variant="dark">
+      <Container>
+        <Nav className="me-auto">
+          <Nav.Link as={NavLink} to="/home" >
+            Home
+          </Nav.Link>
+          <Nav.Link as={NavLink} to="/" exact>
+            Store
+          </Nav.Link>
+          <Nav.Link as={NavLink} to="/about">
+            About
+          </Nav.Link>
+          <Nav.Link as={NavLink} to="/contactUs">
+          ContactUs
+          </Nav.Link>
 
-  
-    </>
+        </Nav>
+        <NavbarButton onClick={onShowCart} />
+      </Container>
+    </Navbar>
   );
-}
+};
 
-export default ColorSchemesExample;
+export default NavbarComponent;
