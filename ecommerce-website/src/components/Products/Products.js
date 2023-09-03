@@ -1,11 +1,9 @@
 import React, { Fragment } from "react";
-// import ProductItem from './ProductsItem/ProductsItems'
-
-
 import ProductsItems from "./ProductsItem/ProductsItems";
 
-export const productsArr = [
+ export const productsArr = [
   {
+    id:1,
     title: "Colors",
 
     price: 100,
@@ -14,6 +12,7 @@ export const productsArr = [
   },
 
   {
+    id:2,
     title: "Black and white Colors",
 
     price: 50,
@@ -22,6 +21,7 @@ export const productsArr = [
   },
 
   {
+    id:3,
     title: "Yellow and Black Colors",
 
     price: 70,
@@ -30,6 +30,7 @@ export const productsArr = [
   },
 
   {
+    id:4,
     title: "Blue Color",
 
     price: 100,
@@ -40,7 +41,7 @@ export const productsArr = [
 const products = productsArr.map((product) => (
   <ProductsItems
      key={product.id}
-    id={Math.random()}
+    id={product.id}
     price={product.price}
     title={product.title}
     img={product.imageUrl}
