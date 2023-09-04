@@ -1,12 +1,10 @@
 
-
-
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Layout/Navbar";
 import Products from "./components/Products/Products";
 import Cart from "./components/Cart/Cart";
-import CartProvider from "./components/store/CartProvider";
+import CartContext from "./components/store/cart-context";
 import About from "./components/Pages/About";
 import Generics from "./components/TheGenerics/Generics";
 import Home from "./components/Pages/Home";
@@ -14,8 +12,12 @@ import Footer from "./components/Layout/Footer";
 import ContactUs from "./components/Pages/ContactUs";
 import { Route, Routes} from "react-router-dom"; 
 import ProductPage from "./components/Products/ProductDetails/ProductDetails";
+import AuthPage from "./components/Pages/AuthPage";
 
 function App() {
+
+const authCtx=useContext(CartContext);
+const isLoggedIn = authCtx.isLoggedIn;
   const [cart, setCart] = useState(false);
 
   async function addDetailsHandler(detail) {
@@ -42,9 +44,9 @@ function App() {
 
   return (
     <Fragment>
-      <CartProvider>
+     
         <Navbar onShowCart={onShowCartHandler} />
-        {cart && <Cart onHideCart={onHideCartHandler} />}
+      {cart && <Cart onHideCart={onHideCartHandler} />}
         {!cart && <Generics />}
         <Routes>
           {!cart && <Route path="/about" element={<About />} />}
@@ -58,10 +60,10 @@ function App() {
           )}
           <Route path="Products/:productId" element={<ProductPage />} />
 
-         
+           {!cart&& <Route  path='/auth'  element={<AuthPage/>}/>}
         </Routes>
         <Footer />
-      </CartProvider>
+    
     </Fragment>
   );
 }
