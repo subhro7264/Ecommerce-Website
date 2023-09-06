@@ -15,7 +15,7 @@ const Footer = () => {
             rel="noopener noreferrer"
           >Youtube</Nav.Link>
           <Nav.Link href="https://www.linkedin.com/">LinkDin</Nav.Link>
-          <Nav.Link href="https://sharpener.tech.com">Sharpener</Nav.Link>
+          <Nav.Link href="https://student.sharpener.tech/dashboard">Sharpener</Nav.Link>
         </Nav>
       </Container>
     </Navbar>

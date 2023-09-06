@@ -42,9 +42,10 @@ function App() {
 
   return (
     <Fragment>
-      <Navbar onShowCart={onShowCartHandler} />
-      {cart && <Cart onHideCart={onHideCartHandler} />}
-      {!cart && <Generics />}
+      { <Navbar onShowCart={onShowCartHandler} />}
+      {cart && isLoggedIn && <Cart onHideCart={onHideCartHandler} />}
+  
+      {!cart && isLoggedIn && <Generics />}
       <Routes>
         {!cart && (
           <Route
@@ -102,9 +103,9 @@ function App() {
 
         {/* <Route path="Products/:productId" element={<ProductPage />} /> */}
 
-        {!cart && <Route path="/auth" element={<AuthPage />} />}
+        {!cart && !isLoggedIn && <Route path="/auth" element={<AuthPage />} />}
       </Routes>
-      <Footer />
+     {isLoggedIn&& <Footer />}
     </Fragment>
   );
 }

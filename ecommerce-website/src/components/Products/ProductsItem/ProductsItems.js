@@ -6,7 +6,6 @@
 // const ProductsItems = (props) => {
 //   const cartCtx=useContext(CardContext)
 
-  
 //   const addToCartHandler=(amount)=>{
 //     cartCtx.addItem({
 //       id:props.id,
@@ -17,7 +16,7 @@
 //     })
 //   }
 //   return (
-    
+
 //       <Container className="mt-5  text-center " variant="flush">
 //           <Col  className="d-flex justify-content-center" >
 //             <Row >
@@ -27,12 +26,12 @@
 //                   <Card.Title>{props.title}</Card.Title>
 //                   <Card.Title>${props.price}</Card.Title>
 //                 </Card.Body>
-//               <ProductForm onAddToCart={addToCartHandler}/> 
+//               <ProductForm onAddToCart={addToCartHandler}/>
 //               </Card>
 //             </Row>
 //           </Col>
 //         </Container>
-    
+
 //   );
 // };
 // export default ProductsItems;
@@ -45,15 +44,19 @@ import { Link } from "react-router-dom";
 
 const ProductItem = (props) => {
   const cartCtx = useContext(CardContext);
+  //  const userEmailId=cartCtx.email;
+ 
+   const addToCartHandler = async (amount) => {
+    
 
-  const addToCartHandler = (amount) => {
-    cartCtx.addItem({
-      id: props.id,
-      img: props.img,
-      name: props.title,
-      amount: amount,
-      price: props.price,
-    });
+      cartCtx.addItem({
+        id: props.id,
+        img: props.img,
+        name: props.title,
+        amount: amount,
+        price: props.price,
+      });
+    
   };
 
   return (
@@ -78,4 +81,3 @@ const ProductItem = (props) => {
 };
 
 export default ProductItem;
-
