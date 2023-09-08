@@ -1,111 +1,57 @@
 import React, { Fragment } from "react";
-// import ProductItem from './ProductsItem/ProductsItems'
+import ProductsItems from "./ProductsItem/ProductsItems";
 
-const productsArr = [
+ export const productsArr = [
   {
+    id:"1",
     title: "Colors",
 
     price: 100,
 
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+    img: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
   },
 
   {
+    id:"2",
     title: "Black and white Colors",
 
     price: 50,
 
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+    img: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
   },
 
   {
+    id:"3",
     title: "Yellow and Black Colors",
 
     price: 70,
 
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+    img: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
   },
 
   {
+    id:"4",
     title: "Blue Color",
 
     price: 100,
 
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+    img: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
   },
 ];
+const products = productsArr.map((product) => (
+  <ProductsItems
+     key={product.id}
+    id={product.id}
+    price={product.price}
+    title={product.title}
+    img={product.img}
+  />
+));
 
 const Products = () => {
   return (
     <Fragment>
-        <div >
-      <ul>
-        <li>
-          <div>
-            {productsArr[0].title}
-
-            <div>
-              {
-                <img
-                  src="https://prasadyash2411.github.io/ecom-website/img/Album%201.png"
-                  alt="this a "
-                />
-              }
-            </div>
-            <div>Price={productsArr[0].price}</div>
-          </div>
-        </li>
-
-        <li>
-          <div>
-            {productsArr[1].title}
-
-            <div>
-              {
-                <img
-                  src="https://prasadyash2411.github.io/ecom-website/img/Album%204.png"
-                  alt="this a "
-                />
-              }
-            </div>
-            <div>Price={productsArr[1].price}</div>
-          </div>
-        </li>
-
-        <li>
-          <div>
-            {productsArr[2].title}
-
-            <div>
-              {
-                <img
-                  src="https://prasadyash2411.github.io/ecom-website/img/Album%203.png"
-                  alt="this a "
-                />
-              }
-            </div>
-            <div>Price={productsArr[2].price}</div>
-          </div>
-        </li>
-
-        <li>
-          <div>
-            {productsArr[3].title}
-
-            <div>
-              {
-                <img
-                  src="https://prasadyash2411.github.io/ecom-website/img/Album%202.png"
-                  alt="this a "
-                />
-              }
-            </div>
-            <div>Price={productsArr[3].price}</div>
-          </div>
-        </li>
-      </ul>
-      </div>
-
+      <div>{products}</div>
     </Fragment>
   );
 };
