@@ -1,4 +1,4 @@
-import { useState, useRef, useContext, useEffect, useCallback } from "react";
+import { useState, useRef, useContext, useEffect } from "react";
 import classes from "./AuthForm.module.css";
 import CartContext from "../store/cart-context";
 import { useNavigate } from "react-router-dom";
@@ -23,33 +23,21 @@ const AuthForm = () => {
   //   }, 5* 60 * 1000);
   // });
 
-  // useEffect(() => {
-  //   const logoutTimer = setTimeout(() => {
-  //     authCtx.logout();
-  //     navigate("/auth", { replace: true });
-  //   }, 5 * 60 * 1000);
-
-  //   // Clear the timer if the component unmounts or if authCtx changes
-  //   return () => {
-  //     clearTimeout(logoutTimer);
-  //   };
-  // }, [navigate,authCtx]);
-
-  const logoutAndNavigate = useCallback(() => {
-    authCtx.logout();
-    navigate("/auth", { replace: true });
-  }, [authCtx, navigate]);
-
   useEffect(() => {
-    const logoutTimer = setTimeout(logoutAndNavigate, 5 * 60 * 1000);
+    const logoutTimer = setTimeout(() => {
+      authCtx.logout();
+      navigate("/auth", { replace: true });
+    }, 5 * 60 * 1000);
 
     // Clear the timer if the component unmounts or if authCtx changes
     return () => {
       clearTimeout(logoutTimer);
     };
-  }, [authCtx, logoutAndNavigate]);
+  }, [isLogin,authCtx,navigate]);
 
-  const submitHandler = async(e) => {
+  
+
+  const submitHandler = async (e) => {
     e.preventDefault();
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
@@ -64,42 +52,6 @@ const AuthForm = () => {
       url =
         "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDzG7xWkD186fKUg_yhjslT2FShKXhEDPI";
     }
-    // fetch(url, {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     email: enteredEmail,
-    //     password: enteredPassword,
-    //     returnSecureToken: true,
-    //   }),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // })
-    //   .then((res) => {
-    //     setIsLoading(false);
-    //     if (res.ok) {
-    //       return res.json();
-    //     } else {
-    //       return res.json().then((data) => {
-    //         let errorMessage = "Authentication failed";
-    //         // if (data && data.error && data.error.message) {
-    //         //   errorMessage = data.error.message;
-    //         // }
-
-    //         throw new Error(errorMessage);
-    //       });
-    //     }
-    //   })
-    //   .then((data) => {
-    //     const email = data.email;
-    //     const token = data.idToken;
-    //     const endpoint = `/cart${email.replace(/\.|@/g, "")}`;
-    //     authCtx.login(token, endpoint);
-    //     navigate("/", { replace: true });
-    //   })
-    //   .catch((err) => {
-    //     alert(err.message);
-    //   });
     try {
       const response = await fetch(url, {
         method: "POST",
@@ -127,7 +79,7 @@ const AuthForm = () => {
       const data = await response.json();
       const email = data.email;
       const token = data.idToken;
-      const endpoint = `/cart${email.replace(/\.|@/g, "")}`;
+      const endpoint = `/${email.replace(/\.|@/g, "")}`;
       authCtx.login(token, endpoint);
       navigate("/", { replace: true });
     } catch (err) {
@@ -135,7 +87,6 @@ const AuthForm = () => {
     } finally {
       setIsLoading(false);
     }
-
   };
 
   return (

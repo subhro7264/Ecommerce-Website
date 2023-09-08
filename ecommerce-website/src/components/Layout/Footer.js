@@ -1,3 +1,5 @@
+
+
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -5,17 +7,21 @@ import Navbar from "react-bootstrap/Navbar";
 
 const Footer = () => {
   return (
-    <Navbar bg="primary" data-bs-theme="dark" className="align-item-end">
-      <Container  className="ms-auto">
+    <Navbar bg="primary" variant="dark" fixed="bottom">
+      <Container>
         <Navbar.Brand>The Generics</Navbar.Brand>
-        <Nav >
+        <Nav className="ml-auto">
           <Nav.Link
-            href="https://Youtube.com"
+            href="https://youtube.com"
             target="_blank"
             rel="noopener noreferrer"
-          >Youtube</Nav.Link>
-          <Nav.Link href="https://www.linkedin.com/">LinkDin</Nav.Link>
-          <Nav.Link href="https://student.sharpener.tech/dashboard">Sharpener</Nav.Link>
+          >
+            YouTube
+          </Nav.Link>
+          <Nav.Link href="https://www.linkedin.com/">LinkedIn</Nav.Link>
+          <Nav.Link href="https://student.sharpener.tech/dashboard">
+            Sharpener
+          </Nav.Link>
         </Nav>
       </Container>
     </Navbar>
@@ -23,3 +29,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

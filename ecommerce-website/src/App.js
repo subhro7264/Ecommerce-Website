@@ -45,7 +45,7 @@ function App() {
       { <Navbar onShowCart={onShowCartHandler} />}
       {cart && isLoggedIn && <Cart onHideCart={onHideCartHandler} />}
   
-      {!cart && isLoggedIn && <Generics />}
+      {!cart && isLoggedIn && !Home && <Generics />}
       <Routes>
         {!cart && (
           <Route
